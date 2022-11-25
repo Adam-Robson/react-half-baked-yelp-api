@@ -36,7 +36,7 @@ function App() {
           <button onClick={ handleBusinesses }>search</button>
         </div>
       </div>
-      { loading && <div className="loader">Loading...</div>},
+      { loading && <div className="loader"></div>}
       { !loading && businesses.map((b) => <RestaurantListItem key={ b.id } { ...b } />) }
     </div>
   );

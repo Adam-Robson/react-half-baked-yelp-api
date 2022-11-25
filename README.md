@@ -1,7 +1,7 @@
 # React Yelp API
 
 ## Getting Started
-olleh civ
+
 1. Use [the React Yelp API template repo](https://github.com/alchemycodelab/react-half-baked-yelp-api) to get started.
 2. Sign up for a Yelp API key [here](https://www.yelp.com/developers/documentation/v3) - you need to create an App and it will give you an API key - store the key in your `.env.development.local` file
 3. To use Netlify functions locally, we need to use a special command to start our app - instead of `npm start` use `npm run dev`
