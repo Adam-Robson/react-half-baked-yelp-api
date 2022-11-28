@@ -8,6 +8,7 @@ function App() {
   const [zip, setZip] = useState('');
   const [search, setSearch] = useState('');
   const [loading, setLoading] = useState(true);
+
   useEffect(() => {
     const fetchData = async () => {
       const data = await fetchBusinesses();
@@ -18,8 +19,16 @@ function App() {
   }, []);
 
   const handleBusinesses = async () => {
-    const response = await fetchBusinesses(zip, search);
-    setBusinesses(response);
+    const res = await fetch(`./netlify/functions/fetch-yelp?zip=${zip}`);
+    const data = await res.json();
+    setBusinesses(data);
+  };
+
+  const filterBusinesses = () => {
+    const filteredBusinesses = businesses.filter(
+      business => business.name
+        .toLowerCase()
+        .includes(search));
   };
 
   return (
@@ -32,7 +41,7 @@ function App() {
         </div>
         <div className="form-control">
           <label>Query:</label>
-          <input type="text" placeholder="search" value={ search } onChange={ (e) => setSearch(e.target.value) } />
+          <input type="text" placeholder="search" value={ search } onChange={ (e) => setSearch(e.target.value.toLowerCase()) } />
           <button onClick={ handleBusinesses }>search</button>
         </div>
       </div>
